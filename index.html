@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Quality Enhancer</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Image Quality Enhancer -Motion Suss</h1>
+        <p class="subtitle">Upload a low-quality image and we'll enhance it for you</p>
+        
+        <div class="upload-area" id="uploadArea">
+            <input type="file" id="fileInput" accept="image/*" style="display: none;">
+            <div class="drop-zone" id="dropZone">
+                <img src="upload-icon.png" alt="Upload" class="upload-icon">
+                <p>Drag & drop your image here or click to browse</p>
+                <p class="file-types">Supports: JPG, JPEG, PNG</p>
+            </div>
+        </div>
+        
+        <div class="processing-area" id="processingArea" style="display: none;">
+            <div class="loader"></div>
+            <p>Enhancing your image...</p>
+            <p class="progress-text" id="progressText">Initializing model...</p>
+        </div>
+        
+        <div class="result-area" id="resultArea" style="display: none;">
+            <div class="image-comparison">
+                <div class="image-container">
+                    <h3>Original Image</h3>
+                    <img id="originalImage" class="comparison-image">
+                </div>
+                <div class="image-container">
+                    <h3>Enhanced Image</h3>
+                    <img id="enhancedImage" class="comparison-image">
+                </div>
+            </div>
+            
+            <div class="download-options">
+                <h3>Download Enhanced Image</h3>
+                <div class="format-options">
+                    <button id="downloadPng" class="download-btn">PNG (Lossless)</button>
+                    <button id="downloadJpeg" class="download-btn">JPEG (Compressed)</button>
+                </div>
+                <div class="quality-control" id="qualityControl" style="display: none;">
+                    <label for="jpegQuality">JPEG Quality:</label>
+                    <input type="range" id="jpegQuality" min="50" max="100" value="90">
+                    <span id="qualityValue">90%</span>
+                </div>
+            </div>
+            
+            <button id="processAnother" class="process-another-btn">Process Another Image</button>
+        </div>
+        
+        <div class="info-section">
+            <h2>How It Works</h2>
+            <div class="features">
+                <div class="feature">
+                    <h3>Resolution Increase</h3>
+                    <p>Upscales your image up to 4x while preserving details</p>
+                </div>
+                <div class="feature">
+                    <h3>Noise Reduction</h3>
+                    <p>Removes grain and compression artifacts</p>
+                </div>
+                <div class="feature">
+                    <h3>Sharpness Enhancement</h3>
+                    <p>Improves edge definition and clarity</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
